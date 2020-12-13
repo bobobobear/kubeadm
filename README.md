@@ -173,3 +173,23 @@ kubeadm reset
 rm -rf $HOME/.kube/
 rm -rf /etc/kubernetes/
 ``` 
+
+## Setting Up Kubeadm without Internet access
+
+### Step 1: Install Docker, kubeadm, kubectl, kubelet and their dependencies
+### Step 2: Load prepulled Kubernetes, Calico, and Kubernetes UI dashboard images. The images are:
+k8s.gcr.io/kube-proxy <br />
+k8s.gcr.io/kube-scheduler <br />
+k8s.gcr.io/kube-apiserver <br />
+k8s.gcr.io/kube-controller-manager <br />
+k8s.gcr.io/etcd <br />
+k8s.gcr.io/coredns <br />
+k8s.gcr.io/pause <br />
+calico/node <br />
+calico/pod2daemon-flexvol <br />
+calico/cni <br />
+calico/kube-controllers <br />
+kubernetesui/dashboard <br />
+kubernetesui/metrics-scraper <br />
+ 
+
