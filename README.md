@@ -1,10 +1,10 @@
 # kubeadm
 
 ## Sources
-https://www.padok.fr/en/blog/kubeadm-kubernetes-cluster
-https://kubernetes.io/blog/2020/12/02/dockershim-faq/
-https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
-https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
+https://www.padok.fr/en/blog/kubeadm-kubernetes-cluster <br />
+https://kubernetes.io/blog/2020/12/02/dockershim-faq/ <br />
+https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/ <br />
+https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md <br />
 
 Kubernetes (k8) is a very powerful tool in the modern cloud-based world. Allowing for high scalability, reliability and availability, it is broadly used, and available on all cloud providers. However, its use is not restricted to a cloud setup. You can set up a Kubernetes cluster on your own bare metal machines, using kubeadm.
 kubeadm is a Kubernetes installer. This means it is a tool built for the sole purpose of making it easy to install a Kubernetes cluster on any machine in a matter of minutes. Other installers exist, like kops (repository link) or kubicorn (repository link), but kubeadm is the most commonly used as it is the easiest to use and is officially supported by all popular cloud providers.
