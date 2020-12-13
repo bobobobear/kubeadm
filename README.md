@@ -165,3 +165,10 @@ To join the Kubernetes cluster as a worker node, you will need to start with ste
 kubeadm token create --print-join-command
 kubeadm join <control-plane-host>:<control-plane-port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>
 ``` 
+### Reseting kubeadm
+To reset kubeadmin
+``` bash
+kubeadm reset
+rm -rf $HOME/.kube/
+rm -rf /etc/kubernetes/
+``` 
