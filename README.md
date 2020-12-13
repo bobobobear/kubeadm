@@ -34,18 +34,17 @@ swapoff -a; sed -i '/swap/d' /etc/fstab
 #### Installing components
 Now that you have got that out of the way, you have a couple of things to install on each machine that is part of the cluster. You first need to add the Kubernetes repository to your package manager. Then, you can install all the components you will need to configure your cluster. The components are kubelet, kubeadm, and kubectl.
 
+Add the google cloud package repository to your sources
 ``` bash
-# If you don't have curl yet, install it
-sudo apt-get update && sudo apt-get install -y apt-transport-https curl
-# Add the google cloud package repository to your sources
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add –
 cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list deb 
 https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 sudo apt-get update
-# Install components
 sudo apt-get install -y kubelet kubeadm kubectl
-# Hold version
+```
+Hold version
+``` bash
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
@@ -54,9 +53,13 @@ Launching the cluster is “as easy” as running kubeadm init. However, this si
 
 ``` bash
 kubeadm init --apiserver-advertise-address=<ip-address> --pod-network-cidr=192.168.0.0/16  --ignore-preflight-errors=all
-# Deploy Calico Network 
+```
+Deploy Calico Network 
+``` bash
 kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectcalico.org/manifests/calico.yaml
-# If you want to be able to run kubectl commands as non-root user, then as a non-root user perform these
+``` 
+If you want to be able to run kubectl commands as non-root user, then as a non-root user perform these
+``` bash
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
