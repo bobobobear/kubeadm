@@ -142,7 +142,7 @@ kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboar
 ```
 It should print something like:
 
-``` bash
+``` console
 Name:         admin-user-token-v57nw
 Namespace:    kubernetes-dashboard
 Labels:       <none>
