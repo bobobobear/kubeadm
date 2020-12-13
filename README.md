@@ -3,6 +3,7 @@
 ## Sources
 https://www.padok.fr/en/blog/kubeadm-kubernetes-cluster <br />
 https://kubernetes.io/blog/2020/12/02/dockershim-faq/ <br />
+https://github.com/justmeandopensource/kubernetes/blob/master/docs/install-cluster-ubuntu-20.md <br />
 https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/ <br />
 https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md <br />
 
