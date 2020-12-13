@@ -12,7 +12,7 @@ The disadvantages of kubeadm are that the setup is longer than using cloud servi
 
 First up, you will need to install a runtime for your containers to run in. The most commonly used with Kubernetes is Docker, but you could also use containerd or CRI-O for example. Note that the removal of the dockershim and therefore Docker container runtime is currently planned for Kubernetes 1.23, slated for release in late 2021. Starting with Kubernetes 1.20, users will get a deprecation warning if they are using the Docker container runtime. 
 Installing Docker 
-'''bash
+''' bash
 $ curl -fsSL https://get.docker.com -o get-docker.sh
 $ sudo sh get-docker.sh
 '''
