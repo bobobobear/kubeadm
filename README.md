@@ -63,7 +63,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 Once all that is done, you will have an up and running master node. The init will take a while, but at the end, kubeadm should provide you with an output looking like this, including instructions on how to set up kubectl to connect to the cluster, and how to have a node join the cluster as a worker:
 
-``` bash
+``` console
 Your Kubernetes control-plane has initialized successfully!
 
 To start using your cluster, you need to run the following as a regular user:
