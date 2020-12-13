@@ -1,4 +1,4 @@
-# kubeadm
+# kubeadm v1.20.0
 
 ## Sources
 https://www.padok.fr/en/blog/kubeadm-kubernetes-cluster <br />
