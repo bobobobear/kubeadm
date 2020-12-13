@@ -1,5 +1,4 @@
 # kubeadm
-kubeadm installation 
 
 Kubernetes (k8) is a very powerful tool in the modern cloud-based world. Allowing for high scalability, reliability and availability, it is broadly used, and available on all cloud providers. However, its use is not restricted to a cloud setup. You can set up a Kubernetes cluster on your own bare metal machines, using kubeadm.
 kubeadm is a Kubernetes installer. This means it is a tool built for the sole purpose of making it easy to install a Kubernetes cluster on any machine in a matter of minutes. Other installers exist, like kops (repository link) or kubicorn (repository link), but kubeadm is the most commonly used as it is the easiest to use and is officially supported by all popular cloud providers.
@@ -16,3 +15,29 @@ Installing Docker
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
+### Step 2: Installing kubeadm
+
+#### Removing Swap
+The first thing to do when installing kubeadm, is to disable swap on all machines (both master nodes and worker nodes). The kubelet, as it functions at the day of writing this article, does not support swap memory. 
+
+``` bash
+swapoff -a; sed -i '/swap/d' /etc/fstab
+```
+
+#### Installing components
+Now that you have got that out of the way, you have a couple of things to install on each machine that is part of the cluster. You first need to add the Kubernetes repository to your package manager. Then, you can install all the components you will need to configure your cluster. The components are kubelet, kubeadm, and kubectl.
+
+``` bash
+# If you don't have curl yet, install it
+sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+# Add the google cloud package repository to your sources
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add –
+cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list deb https://apt.kubernetes.io/ kubernetes-xenial main EOF
+sudo apt-get update
+# Install components
+sudo apt-get install -y kubelet kubeadm kubectl
+# Hold version
+sudo apt-mark hold kubelet kubeadm kubectl
+```
+
+### Step 3: Starting the Kubernetes cluster
