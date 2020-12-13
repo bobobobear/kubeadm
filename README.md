@@ -177,7 +177,7 @@ rm -rf /etc/kubernetes/
 ## Setting Up Kubeadm without Internet access
 
 ### Step 1: Install Docker, kubeadm, kubectl, kubelet and their dependencies
-### Step 2: Load prepulled Kubernetes, Calico, and Kubernetes UI dashboard images. The images are:
+### Step 2: Load prepulled Kubernetes, Calico, and Kubernetes UI dashboard images into Docker Repository. The images are:
 k8s.gcr.io/kube-proxy <br />
 k8s.gcr.io/kube-scheduler <br />
 k8s.gcr.io/kube-apiserver <br />
@@ -191,5 +191,12 @@ calico/cni <br />
 calico/kube-controllers <br />
 kubernetesui/dashboard <br />
 kubernetesui/metrics-scraper <br />
- 
 
+``` bash
+docker load --input IMAGE.tar
+``` 
+### Step 3: Load predownloaded kubernetes manifest files. The kubernetes manifest files are:
+https://docs.projectcalico.org/manifests/calico.yaml <br />
+https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml <br />
+
+### Step 4:
