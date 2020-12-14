@@ -56,6 +56,10 @@ Launching the cluster is “as easy” as running kubeadm init. However, this si
 ``` bash
 kubeadm init --apiserver-advertise-address=<ip-address> --pod-network-cidr=192.168.0.0/16  --ignore-preflight-errors=all
 ```
+``` console
+kubeadm join 172.29.109.149:6443 --token zo0zod.x4sjj7btaqbcu2hm \
+    --discovery-token-ca-cert-hash sha256:bcd7c186e558830a0ca7b02fbaa19149ceb3c4da6879dc6546c8d0fdf87adb70 
+```
 Deploy Calico Network 
 ``` bash
 kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectcalico.org/manifests/calico.yaml
