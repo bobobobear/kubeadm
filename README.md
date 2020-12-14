@@ -56,10 +56,6 @@ Launching the cluster is “as easy” as running kubeadm init. However, this si
 ``` bash
 kubeadm init --apiserver-advertise-address=<ip-address> --pod-network-cidr=192.168.0.0/16  --ignore-preflight-errors=all
 ```
-``` console
-kubeadm join 172.29.109.149:6443 --token zo0zod.x4sjj7btaqbcu2hm \
-    --discovery-token-ca-cert-hash sha256:bcd7c186e558830a0ca7b02fbaa19149ceb3c4da6879dc6546c8d0fdf87adb70 
-```
 Deploy Calico Network 
 ``` bash
 kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectcalico.org/manifests/calico.yaml
@@ -91,8 +87,8 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 
 Then you can join any number of worker nodes by running the following on each as root:
 
-kubeadm join 192.168.1.219:6443 --token 8hg76g.33uirajqh3xkdpll \
-    --discovery-token-ca-cert-hash sha256:e6520d06f6cb64015036dbdb9463aca769a804aff3c11a02f34c5f0cfee169d2
+kubeadm join 172.29.109.149:6443 --token zo0zod.x4sjj7btaqbcu2hm \
+    --discovery-token-ca-cert-hash sha256:bcd7c186e558830a0ca7b02fbaa19149ceb3c4da6879dc6546c8d0fdf87adb70 
 ``` 
 
 
