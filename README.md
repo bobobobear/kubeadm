@@ -19,10 +19,15 @@ The disadvantages of kubeadm are that the setup is longer than using cloud servi
 ### Step 1: The container runtime
 
 First up, you will need to install a runtime for your containers to run in. The most commonly used with Kubernetes is Docker, but you could also use containerd or CRI-O for example. Note that the removal of the dockershim and therefore Docker container runtime is currently planned for Kubernetes 1.23, slated for release in late 2021. Starting with Kubernetes 1.20, users will get a deprecation warning if they are using the Docker container runtime. 
-Installing Docker 
+Installing Docker Engine
 ``` bash
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
+{
+  apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+  add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  apt update
+  apt install -y docker-ce=5:19.03.10~3-0~ubuntu-focal containerd.io
+}
 ```
 ### Step 2: Installing kubeadm
 
@@ -31,6 +36,14 @@ The first thing to do when installing kubeadm, is to disable swap on all machine
 
 ``` bash
 swapoff -a; sed -i '/swap/d' /etc/fstab
+```
+#### Update sysctl settings for Kubernetes networking
+``` bash
+cat >>/etc/sysctl.d/kubernetes.conf<<EOF
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+sysctl --system
 ```
 
 #### Installing components
